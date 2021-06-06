@@ -1,0 +1,12 @@
+docker pull jellyfin/jellyfin //拉取docker镜像
+
+ls /dev/dri     //查看是否支持硬件解码
+若输出
+“card0 renderD128”则支持硬件解码
+
+mkdir /media                                     //建立文件夹
+chown jellyfin:jellyfin /media             //配置文件夹用户权限
+chmod 777 /media                           //配置文件夹权限777
+
+docker run -d --volume /opt/jellyfin/config:/config --volume /opt/jellyfin/cache:/cache  --volume /home:/media  --net=host --restart=always --device /dev/dri/renderD128:/dev/dri/renderD128 --device /dev/dri/card0:/dev/dri/card0 --name="jellyfin" --restart=always jellyfin/jellyfin:latest
+

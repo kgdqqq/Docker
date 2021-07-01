@@ -1,0 +1,32 @@
+cd /home
+mkdir /media
+
+
+yum install samba -y
+
+
+cd /etc/samba
+mv smb.conf smb.conf.b
+
+wget 
+
+[global]
+	workgroup = SAMBA
+	security = user 
+#	map to guest = Bad User    
+	passdb backend = tdbsam
+[t]
+	comment = Public Stuff
+
+	path = /home/media
+
+	browsable = no
+
+	writable = yes
+
+	guest ok = no
+
+	read only = no
+
+
+smbpasswd -a root

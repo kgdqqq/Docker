@@ -74,6 +74,7 @@ docker run -d   --net=host --restart=always  --name 123 -v /home/Iso_image/data:
 
 
 #  Docker  openwrt版
+https://github.com/SuLingGG/OpenWrt-Docker-Mini
 docker run --restart always --name openwrt -d --network host --privileged registry.cn-shanghai.aliyuncs.com/suling/openwrt:x86_generic /sbin/init
 
 #进入配置

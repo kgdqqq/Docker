@@ -72,6 +72,12 @@ docker run -d   --net=host --restart=always  --name 123 -v /home/Iso_image/data:
 
 
 
+
+suling/openwrt:x86_generic
+docker run --restart always --name openwrt -d --network host --privileged registry.cn-shanghai.aliyuncs.com/suling/openwrt:x86_generic /sbin/init
+
+
+
 # ubuntu
 docker run -d   --net=host -v /etc/timezone/timezone:/etc/timezone -v /etc/localtime:/etc/localtime  --restart=always  --name cobbler  --restart=always    --privileged=true ubuntu /usr/sbin/init
 

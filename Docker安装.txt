@@ -1,6 +1,5 @@
-curl -sSL https://get.docker.com/ | sh
+curl -fsSL https://get.docker.com | bash -s docker --mirror docker.mirrors.ustc.edu.cn
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<-'EOF'
@@ -8,6 +7,28 @@ sudo tee /etc/docker/daemon.json <<-'EOF'
   "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
 }
 EOF
+
 sudo systemctl daemon-reload
 sudo systemctl restart docke
 systemctl start docker.service
+
+
+
+
+
+wget -qO- https://get.docker.com | bash -s docker --mirror docker.mirrors.ustc.edu.cn
+
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
+}
+EOF
+
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+
+
+
+

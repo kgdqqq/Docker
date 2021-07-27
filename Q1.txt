@@ -1,0 +1,155 @@
+docker 启动实例
+
+
+# 查找 镜像
+docker search 
+
+# 查看本地镜像列表
+docker images
+
+# 删除镜像
+docker rmi <image id>
+#查看容器
+docker ps -a 
+
+#开机启动
+docker update --restart=always 容器id
+
+#进入容器
+docker attach 容器id
+
+导出镜像
+docker save -o hg zabbix/zabbix-appliance
+导入镜像
+docker load -i hg
+
+docker rm -f  强制删除
+#  蒲公英
+docker pull bestoray/pgyvpn
+docker run -d --net host --cap-add NET_ADMIN --env PGY_USERNAME="xxx" --env PGY_PASSWORD="xxx" bestoray/pgyvpn
+
+
+ docker run -d --net host --cap-add NET_ADMIN --env PGY_USERNAME="xxx" --env PGY_PASSWORD="xxx" bestoray/pgyvpn
+
+
+#   httpd
+docker pull httpd
+docker run -it -d -p 1:80  --name httpd
+
+#  portainer
+docker pull portainer/portainer 
+docker run -d -p 9000:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --name prtainer portainer/portainer
+
+docker pull homeassistant/home-assistant
+docker run --init -d --name="home-assistant" --restart always -e "TZ=Asia/Shanghai" -v /opt/homeassistant:/config --net=host homeassistant/home-assistant:latest
+docker exec -it id bash
+
+docker run --init -d --name="home-assistant" --restart always -e "TZ=Asia/Shanghai" -v /opt/homeassistant:/config    -v /etc/timezone/timezone:/etc/timezone -v /etc/localtime:/etc/localtime  --net=host homeassistant/home-assistant:latest
+
+
+docker pull teddysun/kms
+docker run -d -p 1688:1688 --name kms --restart=always teddysun/kms
+
+
+docker pull adguard/adguardhome
+docker run --name adguardhome -v /AdguardHome:/opt/adguardhome/work -v /AdguardHome:/opt/adguardhome/conf -p 53:53/tcp -p 53:53/udp -p 67:67/udp -p 68:68/tcp -p 168:68/udp -p 180:80/tcp -p 443:443/tcp -p 853:853/tcp -p 3000:3000/tcp -d adguard/adguardhome
+
+
+
+centos 镜像
+
+docker run -d --net=host  --name cobble  --restart=always   --privileged=true centos /usr/sbin/init
+
+
+
+docker run -d   --net=host --restart=always  --name cen7  -v /etc/timezone/timezone:/etc/timezone -v /etc/localtime:/etc/localtime  --restart=always   --privileged=true centos:7.9.2009  /bin/bash
+
+
+centos7.9.2009
+docker run -d   --net=host --restart=always  --name 123 -v /home/Iso_image/data:/data_image/  -v /etc/timezone/timezone:/etc/timezone -v /etc/localtime:/etc/localtime  --restart=always   --privileged=true centos7.9.2009
+ /usr/sbin/init 
+
+
+
+
+
+<<<<<<< HEAD
+suling/openwrt:x86_generic
+docker run --restart always --name openwrt -d --network host --privileged registry.cn-shanghai.aliyuncs.com/suling/openwrt:x86_generic /sbin/init
+
+
+=======
+#  Docker  openwrt版
+https://github.com/SuLingGG/OpenWrt-Docker-Mini
+docker run --restart always --name openwrt -d --network host --privileged registry.cn-shanghai.aliyuncs.com/suling/openwrt:x86_generic /sbin/init
+
+
+docker run --restart always --name openwrt -d --network host --privileged registry.cn-shanghai.aliyuncs.com/suling/openwrt:x86_64 /sbin/init
+
+
+
+#进入配置
+docker exec -it openwrt bash
+
+
+>>>>>>> dc354212ce9feb68c91984440c13111b28e455a2
+
+# ubuntu
+docker run -d   --net=host -v /etc/timezone/timezone:/etc/timezone -v /etc/localtime:/etc/localtime  --restart=always  --name cobbler  --restart=always    --privileged=true ubuntu /usr/sbin/init
+
+
+docker run -d  -p 1:80 -p 10050:10050  -p 12050:12050 -p 10051:10051 -p 2:443 -p 10055:10055    -p 3:3000   --name zabbix  --restart=always   --privileged=true centos /usr/sbin/init
+
+cd / && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+-v /etc/timezone/timezone:/etc/timezone -v /etc/localtime:/etc/localtime 
+
+docker run -it -d --name ubuntu_test  -p 8088:80 ubuntu
+
+docker exec -it   /bin/bash
+
+docker exec -it b160db3addae /bin/bash
+
+docker exec -it $CONTAINER_ID /bin/bash
+如果碰到Error: GPG check FAILED需要在dnf 命令最后加上如下参数 --nogpgcheck
+例如
+dnf install passwd --nogpgcheck
+
+
+
+
+curl -sSL https://get.docker.com/ | sh
+docker pull jellyfin/jellyfin:latest 
+docker run -d -v /srv/jellyfin/config:/config -v /srv/jellyfin/cache:/cache -v /home:/media  --device /dev/dri/renderD128:/dev/dri/renderD128 --device /dev/dri/card0:/dev/dri/card0  --name "jellyfin"   --restart=always   --net=host jellyfin/jellyfin:latest
+
+cd /home
+mkdir /media
+
+
+yum install samba -y
+[global]
+	workgroup = SAMBA
+	security = user 
+#	map to guest = Bad User    
+	passdb backend = tdbsam
+
+
+[t]
+
+	comment = Public Stuff
+
+	path = /home/media
+
+	browsable = no
+
+	writable = yes
+
+	guest ok = no
+
+	read only = no
+
+
+smbpasswd -a root
+
+docker update --restart=always 容器id
+

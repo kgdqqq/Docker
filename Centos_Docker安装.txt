@@ -16,20 +16,8 @@ systemctl restart docker
 
 
 
+curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 
-wget -qO- https://get.docker.com | bash -s docker --mirror docker.mirrors.ustc.edu.cn
+chmod +x /usr/local/bin/docker-compose
 
-sudo tee /etc/docker/daemon.json <<-'EOF'
-{
-  "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
-}
-EOF
-
-
-sudo systemctl daemon-reload
-sudo systemctl restart docker
-
-
-
-
-
+docker-compose --version

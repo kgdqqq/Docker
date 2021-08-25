@@ -1,0 +1,22 @@
+version: '2'
+services:
+  privoxy:
+    image: adguard/adguardhome
+    container_name: adguardhome
+    restart: always
+    ports:
+      - "53:53"
+      - "53:53/udp"       
+      - "67:67/udp"
+      - "68:68"
+      - "168:68/udp"
+      - "180:80"
+      - "443:443"
+      - "853:853"
+      - "853:853"
+      - "3000:3000"
+ 
+    volumes:
+      - ./AdguardHome:/opt/adguardhome/work
+      - ./AdguardHome:/opt/adguardhome/conf
+      - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro

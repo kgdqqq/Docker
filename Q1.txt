@@ -62,14 +62,17 @@ docker run -d --net=host  --name cobble  --restart=always   --privileged=true ce
 
 
 
-docker run -d   --net=host --restart=always  --name cen7  -v /etc/timezone/timezone:/etc/timezone -v /etc/localtime:/etc/localtime  --restart=always   --privileged=true centos:7.9.2009  /bin/bash
+docker run -d   --net=host --restart=always  --name cen7 -v /etc/localtime:/etc/localtime  --restart=always --privileged=true centos:7.9.2009  /bin/bash
 
 
 centos7.9.2009
-docker run -d   --net=host --restart=always  --name 123 -v /home/Iso_image/data:/data_image/  -v /etc/timezone/timezone:/etc/timezone -v /etc/localtime:/etc/localtime  --restart=always   --privileged=true centos7.9.2009
- /usr/sbin/init 
+docker run -d   --net=host --restart=always  --name 123 -v /home/Iso_image/data:/data_image/  -v /etc/timezone/timezone:/etc/timezone --restart=always --privileged=true centos7.9.2009 /usr/sbin/init
 
 
+
+
+centos7.9.2009
+docker run -d   --net=host --restart=always  --name 123 -v /home/Iso_image/data:/data_image/  -v /etc/timezone/timezone:/etc/timezone --restart=always --privileged=true debian /usr/sbin/init
 
 
 
@@ -95,7 +98,7 @@ docker exec -it openwrt bash
 >>>>>>> dc354212ce9feb68c91984440c13111b28e455a2
 
 # ubuntu
-docker run -d   --net=host -v /etc/timezone/timezone:/etc/timezone -v /etc/localtime:/etc/localtime  --restart=always  --name cobbler  --restart=always    --privileged=true ubuntu /usr/sbin/init
+docker run -d   --net=host -v /etc/timezone/timezone:/etc/timezone --restart=always  --name cobbler  --restart=always    --privileged=true ubuntu /usr/sbin/init
 
 
 docker run -d  -p 1:80 -p 10050:10050  -p 12050:12050 -p 10051:10051 -p 2:443 -p 10055:10055    -p 3:3000   --name zabbix  --restart=always   --privileged=true centos /usr/sbin/init

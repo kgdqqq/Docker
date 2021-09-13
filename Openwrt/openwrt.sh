@@ -1,0 +1,1 @@
+docker run --restart always --name openwrt -v /etc/localtime:/etc/localtime -v /opt/openwrt/network:/etc/config/network  -v /opt/openwrt/uhttpd:/etc/config/uhttpd -d --network host --privileged registry.cn-shanghai.aliyuncs.com/suling/openwrt:x86_generic /sbin/init

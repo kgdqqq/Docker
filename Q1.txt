@@ -91,6 +91,27 @@ docker run --restart always --name openwrt -d --network host --privileged regist
 
 
 
+
+
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Cib_r2020' --name 'mssql' -p 1433:1433 -v sql1data:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2019-latest
+
+docker run --name mssql 
+
+　　-e "ACCEPT_EULA=Y"
+
+　　-e "MSSQL_PID=PMBDC-FXVM3-T777P-N4FY8-PKFF4"
+
+　　-e "SA_PASSWORD=<SQLOnLinux123>"
+
+　　-v  /f/sqlserver_data:/mnt/mssql/data 
+
+　　-p 1533:1433
+
+　　-d registry.cn-hangzhou.aliyuncs.com/newbe36524/server:2019-latest
+
+
+
+
 #进入配置
 docker exec -it openwrt bash
 
@@ -117,6 +138,7 @@ docker exec -it $CONTAINER_ID /bin/bash
 如果碰到Error: GPG check FAILED需要在dnf 命令最后加上如下参数 --nogpgcheck
 例如
 dnf install passwd --nogpgcheck
+
 
 
 

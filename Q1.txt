@@ -56,6 +56,8 @@ docker run --name adguardhome -v /AdguardHome:/opt/adguardhome/work -v /AdguardH
 
 
 
+docker run --name=jellyfinyj --add-host=api.themoviedb.org:13.224.161.90 --add-host=image.tmdb.org:104.16.61.155 --add-host=api.themoviedb.org:13.35.67.86 --add-host=www.themoviedb.org:54.192.151.79 --device=/dev/dri:/dev/dri jellyfi
+
 centos 镜像
 
 docker run -d --net=host  --name cobble  --restart=always   --privileged=true centos /usr/sbin/init
